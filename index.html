@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Center | PrivLedger Finance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-900 selection:bg-blue-100">
+
+    <!-- Premium Top Bar -->
+    <div class="bg-slate-900 text-white py-2 px-6 text-center text-[10px] uppercase tracking-[0.2em] font-semibold">
+        Secure Zero-Knowledge Architecture Certified
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="border-b border-slate-200 glass-nav sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-slate-900 p-2 rounded-lg text-emerald-400">
+                    <i data-lucide="shield" class="w-5 h-5"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-lg font-bold text-slate-900 leading-none">PrivLedger</span>
+                    <span class="text-[10px] text-slate-500 font-medium uppercase mt-1 tracking-wider">Legal Center</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-500">
+                <a href="#privacy" class="text-slate-900 hover:text-blue-600 transition-colors">Privacy Policy</a>
+                <a href="#terms" class="hover:text-slate-900 transition-colors">Terms of Use</a>
+                <a href="mailto:contact@privledger.com?subject=PrivLedger%20Support%20Inquiry" class="bg-slate-900 text-white px-4 py-2 rounded-full hover:bg-slate-800 transition-all text-xs">
+                    Contact Support
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-16" id="privacy">
+        <!-- Hero Section -->
+        <div class="mb-20">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold mb-6">
+                <i data-lucide="scale" class="w-3.5 h-3.5"></i> Google Play Compliant Document
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-slate-900 mb-8 tracking-tight">
+                Our Privacy <span class="text-slate-400">Commitment.</span>
+            </h1>
+            <p class="text-xl text-slate-600 max-w-2xl leading-relaxed mb-8">
+                This document outlines how PrivLedger handles your data. Because we operate on a 
+                <span class="text-slate-900 font-semibold"> local-first </span> 
+                basis, our policy is simpler than most: <span class="underline decoration-emerald-400 decoration-2 underline-offset-4">we don't take your data.</span>
+            </p>
+            
+            <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-400 bg-white border border-slate-200 p-4 rounded-xl w-fit shadow-sm">
+                <div class="flex items-center gap-2 border-r border-slate-200 pr-4">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                    STATUS: ACTIVE
+                </div>
+                <div class="flex items-center gap-2 border-r border-slate-200 pr-4 uppercase">
+                    VERSION: 2.0.1 (STABLE)
+                </div>
+                <div class="flex items-center gap-2 uppercase">
+                    LAST REVIEWED: MARCH 31, 2026
+                </div>
+            </div>
+        </div>
+
+        <!-- Three Pillars -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div class="mb-4 text-blue-500"><i data-lucide="globe"></i></div>
+                <h3 class="font-bold text-slate-900">No Cloud</h3>
+                <p class="text-sm text-slate-500">Data stays on your hardware.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div class="mb-4 text-emerald-500"><i data-lucide="eye-off"></i></div>
+                <h3 class="font-bold text-slate-900">No Trackers</h3>
+                <p class="text-sm text-slate-500">Zero analytics or SDKs.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div class="mb-4 text-purple-500"><i data-lucide="lock"></i></div>
+                <h3 class="font-bold text-slate-900">Total Ownership</h3>
+                <p class="text-sm text-slate-500">You control the encryption keys.</p>
+            </div>
+        </div>
+
+        <!-- Bento Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Main Column -->
+            <div class="lg:col-span-2 space-y-6">
+                <section class="bg-white p-10 rounded-3xl border border-slate-200">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                        <i data-lucide="file-text" class="w-6 h-6 text-slate-400"></i> 
+                        1. Data Collection & Processing
+                    </h2>
+                    <div class="space-y-4 text-slate-600 leading-relaxed">
+                        <p>
+                            PrivLedger is architected as a <strong>Zero-Knowledge Application</strong>. Unlike traditional financial apps that sync your sensitive data to their servers, PrivLedger processes everything on the edge (your device).
+                        </p>
+                        <p class="bg-slate-50 p-4 rounded-xl border-l-4 border-slate-900 italic text-sm">
+                            "Personal data, financial ledgers, and transaction metadata are never transmitted, seen, or stored by us."
+                        </p>
+                        <p>
+                            We have no technical means to access your records, and therefore, we cannot sell, share, or lose your data.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Terms of Use Section -->
+                <section id="terms" class="bg-white p-10 rounded-3xl border border-slate-200 scroll-mt-24">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                        <i data-lucide="gavel" class="w-6 h-6 text-slate-400"></i> 
+                        2. Terms of Use
+                    </h2>
+                    <div class="space-y-6 text-slate-600 text-sm leading-relaxed">
+                        <div>
+                            <h4 class="font-bold text-slate-900 mb-2">A. Software License</h4>
+                            <p>PrivLedger grants you a personal, non-transferable license to use this software for personal financial management. You may not reverse engineer or attempt to extract the source code of the app.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 mb-2">B. Responsibility of Data</h4>
+                            <p>Because PrivLedger is 100% offline, <strong>you are solely responsible for backing up your data</strong>. If your device is lost, stolen, or damaged, PrivLedger Finance cannot recover your financial records.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 mb-2">C. Limitation of Liability</h4>
+                            <p>PrivLedger is provided "as is" without warranty of any kind. We are not liable for any financial losses, mathematical errors, or data corruption that may occur during the use of the application.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <div class="bg-slate-900 text-white p-8 rounded-3xl shadow-xl shadow-slate-200">
+                    <i data-lucide="trash-2" class="w-10 h-10 text-red-400 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-3">Data Erasure</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        When you delete the app, your data is gone forever. We do not keep shadow copies or cloud mirrors.
+                    </p>
+                    <div class="pt-6 border-t border-slate-800 flex items-center justify-between">
+                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">Self-Sovereignty</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200">
+                    <i data-lucide="mail" class="w-8 h-8 text-blue-500 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-2">Legal Inquiries</h3>
+                    <p class="text-slate-500 text-sm mb-6">
+                        Need a formal statement for audit purposes?
+                    </p>
+                    <a href="mailto:contact@privledger.com?subject=PrivLedger%20Compliance%20Inquiry" class="block text-center py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-xl font-bold transition-colors">
+                        Email Compliance
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 pt-20 pb-10 px-6 mt-20">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <div class="flex items-center gap-2">
+                    <div class="bg-slate-900 p-1.5 rounded-md text-emerald-400">
+                        <i data-lucide="shield" class="w-4 h-4"></i>
+                    </div>
+                    <span class="text-lg font-bold text-slate-900">PrivLedger Finance</span>
+                </div>
+                <div class="flex gap-8 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                    <span>Security</span>
+                    <span>Transparency</span>
+                    <span>Open Source</span>
+                </div>
+            </div>
+            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between gap-4">
+                <p class="text-slate-400 text-[10px] max-w-lg leading-relaxed">
+                    PrivLedger and the associated logo are trademarks of PrivLedger Finance. This document is provided for 
+                    transparency and store listing compliance. Zero data collection is a structural technical limitation 
+                    of the product architecture.
+                </p>
+                <p class="text-slate-400 text-[10px]">
+                    &copy; 2026 PrivLedger Finance.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
