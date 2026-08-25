@@ -44,6 +44,76 @@
     .brand h1 { font-size: 30px; }
     .brand p { color: var(--muted); margin-top: 5px; }
 
+
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 28px;
+      padding: 22px 24px;
+      background: linear-gradient(135deg, #111827, #1e3a8a);
+      color: white;
+      border-radius: 22px;
+      box-shadow: 0 18px 40px rgba(30, 58, 138, .18);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.16);
+      color: #86efac;
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .brand h1 {
+      font-size: 28px;
+      color: white;
+      letter-spacing: -.5px;
+    }
+
+    .brand h1 span { color: #86efac; }
+    .brand p { color: #cbd5e1; margin-top: 5px; font-size: 13px; }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .main-header .date-badge {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.14);
+      color: #e2e8f0;
+    }
+
+    .status-badge {
+      padding: 10px 13px;
+      border-radius: 12px;
+      background: rgba(134,239,172,.1);
+      color: #86efac;
+      border: 1px solid rgba(134,239,172,.18);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+
+    .type-income { color: var(--green) !important; }
+    .type-expense { color: var(--red) !important; }
+
     .date-badge {
       background: var(--card);
       border: 1px solid var(--border);
@@ -310,12 +380,18 @@
 </head>
 <body>
   <div class="app">
-    <header>
+    <header class="main-header">
       <div class="brand">
-        <h1>Expense Tracker</h1>
-        <p>Track your spending and stay in control.</p>
+        <div class="brand-mark">₹</div>
+        <div>
+          <h1>Money<span>Track</span></h1>
+          <p>Your personal income & expense dashboard</p>
+        </div>
       </div>
-      <div class="date-badge" id="today"></div>
+      <div class="header-right">
+        <div class="date-badge" id="today"></div>
+        <div class="status-badge">● LOCAL & PRIVATE</div>
+      </div>
     </header>
 
     <section class="summary">
@@ -328,18 +404,26 @@
         <div class="value expense" id="expenseTotal">₹0.00</div>
       </div>
       <div class="summary-card">
-        <div class="label">Balance</div>
+        <div class="label">Available Balance</div>
         <div class="value balance" id="balanceTotal">₹0.00</div>
       </div>
     </section>
 
     <div class="layout">
       <section class="card form-card">
-        <h2>Add Expense</h2>
+        <h2>Add Money Movement</h2>
 
         <form id="expenseForm">
           <div class="field">
-            <label for="title">Expense Name</label>
+            <label for="type">Type</label>
+            <select id="type">
+              <option value="expense">Expense — Money Spent</option>
+              <option value="income">Income — Money Received</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="title">Name / Description</label>
             <input id="title" type="text" placeholder="e.g. Lunch" required>
           </div>
 
@@ -361,6 +445,9 @@
               <option>Entertainment</option>
               <option>Health</option>
               <option>Education</option>
+              <option>Salary</option>
+              <option>Freelance</option>
+              <option>Gift</option>
               <option>Other</option>
             </select>
           </div>
@@ -370,7 +457,7 @@
             <input id="date" type="date" required>
           </div>
 
-          <button class="add-btn" type="submit">+ Add Expense</button>
+          <button class="add-btn" id="submitBtn" type="submit">+ Add Expense</button>
         </form>
 
         <div class="category-breakdown">
@@ -392,6 +479,9 @@
               <option>Entertainment</option>
               <option>Health</option>
               <option>Education</option>
+              <option>Salary</option>
+              <option>Freelance</option>
+              <option>Gift</option>
               <option>Other</option>
             </select>
             <button class="clear-btn" id="clearAll" type="button">Clear All</button>
@@ -423,6 +513,9 @@
       Entertainment: "🎬",
       Health: "❤️",
       Education: "📚",
+      Salary: "💼",
+      Freelance: "💻",
+      Gift: "🎁",
       Other: "📌"
     };
 
@@ -463,11 +556,23 @@
     }
 
     function renderSummary() {
-      const expenseTotal = expenses.reduce((sum, item) => sum + item.amount, 0);
+      const incomeTotal = expenses
+        .filter(item => item.type === "income")
+        .reduce((sum, item) => sum + item.amount, 0);
 
-      document.getElementById("incomeTotal").textContent = money(0);
+      const expenseTotal = expenses
+        .filter(item => item.type === "expense")
+        .reduce((sum, item) => sum + item.amount, 0);
+
+      const balance = incomeTotal - expenseTotal;
+
+      document.getElementById("incomeTotal").textContent = money(incomeTotal);
       document.getElementById("expenseTotal").textContent = money(expenseTotal);
-      document.getElementById("balanceTotal").textContent = money(-expenseTotal);
+      document.getElementById("balanceTotal").textContent = money(balance);
+
+      const balanceEl = document.getElementById("balanceTotal");
+      balanceEl.classList.toggle("expense", balance < 0);
+      balanceEl.classList.toggle("balance", balance >= 0);
     }
 
     function renderTransactions() {
@@ -476,7 +581,7 @@
 
       let filtered = selected === "All"
         ? [...expenses]
-        : expenses.filter(item => item.category === selected);
+        : expenses.filter(item => item.type === "expense" && item.category === selected);
 
       filtered.sort((a, b) => {
         return new Date(b.date) - new Date(a.date) || b.id - a.id;
@@ -500,13 +605,15 @@
             <div class="transaction-info">
               <div class="transaction-title">${escapeHTML(item.title)}</div>
               <div class="transaction-meta">
-                ${item.category} · ${formatDate(item.date)}
+                ${item.type === "income" ? "Income" : item.category} · ${formatDate(item.date)}
               </div>
             </div>
           </div>
 
           <div class="transaction-right">
-            <div class="transaction-amount">-${money(item.amount)}</div>
+            <div class="transaction-amount ${item.type === "income" ? "type-income" : "type-expense"}">
+              ${item.type === "income" ? "+" : "-"}${money(item.amount)}
+            </div>
             <button class="delete-btn" onclick="deleteExpense(${item.id})" title="Delete">
               🗑
             </button>
@@ -519,9 +626,11 @@
       const container = document.getElementById("breakdown");
       const totals = {};
 
-      expenses.forEach(item => {
-        totals[item.category] = (totals[item.category] || 0) + item.amount;
-      });
+      expenses
+        .filter(item => item.type === "expense")
+        .forEach(item => {
+          totals[item.category] = (totals[item.category] || 0) + item.amount;
+        });
 
       const total = Object.values(totals).reduce((a, b) => a + b, 0);
 
@@ -570,6 +679,15 @@
       }[char]));
     }
 
+
+    document.getElementById("type").addEventListener("change", () => {
+      const type = document.getElementById("type").value;
+      document.getElementById("submitBtn").textContent =
+        type === "income" ? "+ Add Income" : "+ Add Expense";
+      document.getElementById("category").value =
+        type === "income" ? "Salary" : "Food";
+    });
+
     form.addEventListener("submit", event => {
       event.preventDefault();
 
@@ -580,6 +698,7 @@
 
       expenses.push({
         id: Date.now(),
+        type: document.getElementById("type").value,
         title,
         amount,
         category: categoryInput.value,
@@ -591,7 +710,9 @@
 
       form.reset();
       dateInput.value = todayString();
+      document.getElementById("type").value = "expense";
       categoryInput.value = "Food";
+      document.getElementById("submitBtn").textContent = "+ Add Expense";
       titleInput.focus();
     });
 
