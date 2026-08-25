@@ -231,6 +231,3 @@ This project is open for learning, personal use, and further development.
 ---
 
 © 2026 Atharva A. Deshmukh. All Rights Reserved.
-
-```
-```
